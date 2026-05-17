@@ -31,10 +31,10 @@ func startQuiz() {
     print("Quiz started")
     
     var score = 0
-    var queastions = Array(capitals) // словарь → массив кортежей
-    queastions.shuffle() //    // случайный порядок
+    var quastions = Array(capitals) // словарь → массив кортежей
+    quastions.shuffle() //    // случайный порядок
     
-    quizLoop: for (country, capital) in queastions { // inner circle!
+    quizLoop: for (country, capital) in quastions { // inner circle!
         
         print("> Capital of \(country)? ", terminator: "") // задаем вопрос
         let input = readLine()? // получаем ответ
