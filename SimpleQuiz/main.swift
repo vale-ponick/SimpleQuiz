@@ -31,11 +31,18 @@ func startQuiz() {
     
     var score = 0
     
-    for (country, capital) in capitals {
+    quizLoop: for (country, capital) in capitals { // inner circle!
+        
         print("> Capital of \(country)? ", terminator: "") // задаем вопрос
         let input = readLine()? // получаем ответ
             .trimmingCharacters(in: .whitespaces) ?? ""
+        
+        if input.lowercased() == "stop" {
+            print("Quiz stopped")
+            break quizLoop // ← выход из цикла с меткой!
+        }
 
+        
             if input.lowercased() == capital.lowercased() {
                 print("✅ Correct!")
                 score += 1
@@ -65,7 +72,6 @@ func startQuiz() {
             print("By, bro!")
             break
         }
-        
     }
     
 
