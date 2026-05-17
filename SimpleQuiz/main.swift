@@ -11,6 +11,7 @@ print("SimpleQuiz: ✅ Программа задаёт вопрос, user даё
   
 enum Command: String {
     case start = "start"
+    case help = "help"
     case exit = "exit"
     
 }
@@ -30,8 +31,10 @@ func startQuiz() {
     print("Quiz started")
     
     var score = 0
+    var queastions = Array(capitals) // словарь → массив кортежей
+    queastions.shuffle() //    // случайный порядок
     
-    quizLoop: for (country, capital) in capitals { // inner circle!
+    quizLoop: for (country, capital) in queastions { // inner circle!
         
         print("> Capital of \(country)? ", terminator: "") // задаем вопрос
         let input = readLine()? // получаем ответ
@@ -68,10 +71,17 @@ func startQuiz() {
         switch command {
         case .start:
             startQuiz()
+        case .help:
+            print("""
+                 Commands:
+                      start - start the quiz
+                      help  - show this help
+                      exit  - exit the program
+                """)
         case .exit:
             print("By, bro!")
             break
-        }
     }
+}
     
 
